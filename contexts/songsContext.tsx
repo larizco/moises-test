@@ -9,4 +9,4 @@ export function SongsContext(props: any) {
       {props.children}
     </Context.Provider>
   );
-}
+};

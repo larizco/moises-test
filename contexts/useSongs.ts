@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Context } from './songsContext';
+import { Song } from './interfaces';
 
 export function useSongs() {
   const context = React.useContext(Context);
-  const [songs, setSongs] = React.useState(null);
+  const [songs, setSongs] = React.useState([] as Song[]);
   const [isLoading, setIsLoading] = React.useState(false);
 
   if (!context) {
@@ -18,11 +19,11 @@ export function useSongs() {
       const json = await response.json();
       
       setIsLoading(false);
-      setSongs(json);
+      setSongs(json.songs);
     };
     fetchData();
   }, []);
 
 
   return { songs, isLoading };
-}
+};

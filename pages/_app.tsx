@@ -3,14 +3,14 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return(
+  return (
     <>
       <SongsContext> 
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </SongsContext>
     </>
   )
-}
+};
 
 export default MyApp;
  
