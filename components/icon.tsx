@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 interface IconProps {
-  name: 'heart' | 'filled-heart' | 'play'
+  name: 'heart' | 'filled-heart' | 'play' | 'search'
   size: 'small' | 'large'
 };
 

@@ -28,7 +28,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <NavBar search />
+      <NavBar />
       <Header 
         songsNumber={songs?.length} 
         onViewFavorites={toggleViewFavorites}

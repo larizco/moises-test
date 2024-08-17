@@ -1,4 +1,5 @@
 import Icon from "./icon";
+import Search from "./search";
 import Toggle from "./toggle";
 import Wrapper from "./wrapper";
 
@@ -20,7 +21,7 @@ export default function Header({ songsNumber, onViewFavorites, onSortSongs }: He
               </h1>
 
               <button 
-                className='ml-4 bg-transparent-white text-white px-7 rounded-full text-sm flex items-center'
+                className='ml-4 bg-white-transparent-15 text-white px-7 rounded-full text-sm flex items-center'
                 onClick={onViewFavorites}
               >
                 <Icon name='heart' size='small'/>
@@ -34,6 +35,9 @@ export default function Header({ songsNumber, onViewFavorites, onSortSongs }: He
           <div className='flex items-center'>
             <p className='mr-2'> Sort from A-Z </p> 
             <Toggle onClick={onSortSongs} />
+            <div className='w-[254px] ml-3'>
+              <Search />
+            </div>
           </div>
         </div>
       </Wrapper>
