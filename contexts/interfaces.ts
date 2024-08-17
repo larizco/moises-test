@@ -14,3 +14,7 @@ export interface Song {
     title: string
   }
 };
+
+export interface SongWithFavorite extends Song {
+  isFavorite: boolean
+};

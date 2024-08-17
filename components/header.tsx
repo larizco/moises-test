@@ -1,11 +1,12 @@
 import Icon from "./icon";
-import { Wrapper } from "./wrapper";
+import Wrapper from "./wrapper";
 
 interface HeaderProps {
   songsNumber: number
+  onViewFavorites: (value: boolean) => void
 };
 
-export default function Header({ songsNumber }: HeaderProps) {
+export default function Header({ songsNumber, onViewFavorites }: HeaderProps) {
   return (
     <div className='my-12'>
       <Wrapper>
@@ -16,7 +17,10 @@ export default function Header({ songsNumber }: HeaderProps) {
                 Your Library
               </h1>
 
-              <button className='ml-4 bg-transparent-white text-white px-6 rounded-full text-sm flex'>
+              <button 
+                className='ml-4 bg-transparent-white text-white px-7 rounded-full text-sm flex items-center'
+                onClick={() => onViewFavorites(true)}
+              >
                 <Icon name='heart' size='small'/>
                 <p className='ml-1'> Favorites </p>
               </button>

@@ -6,7 +6,7 @@ interface IconProps {
 };
 
 export default function Icon({ name, size }: IconProps) {
-  const sizeNumber = size === 'small' ? 20 : 64;
+  const sizeNumber = size === 'small' ? 16 : 64;
 
   return (
     <Image src={`/assets/icons/${name}.svg`} width={sizeNumber} height={sizeNumber} alt={name}/>
