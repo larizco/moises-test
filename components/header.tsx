@@ -1,12 +1,14 @@
 import Icon from "./icon";
+import Toggle from "./toggle";
 import Wrapper from "./wrapper";
 
 interface HeaderProps {
   songsNumber: number
-  onViewFavorites: (value: boolean) => void
+  onViewFavorites: () => void
+  onSortSongs: () => void
 };
 
-export default function Header({ songsNumber, onViewFavorites }: HeaderProps) {
+export default function Header({ songsNumber, onViewFavorites, onSortSongs }: HeaderProps) {
   return (
     <div className='my-12'>
       <Wrapper>
@@ -19,7 +21,7 @@ export default function Header({ songsNumber, onViewFavorites }: HeaderProps) {
 
               <button 
                 className='ml-4 bg-transparent-white text-white px-7 rounded-full text-sm flex items-center'
-                onClick={() => onViewFavorites(true)}
+                onClick={onViewFavorites}
               >
                 <Icon name='heart' size='small'/>
                 <p className='ml-1'> Favorites </p>
@@ -29,8 +31,9 @@ export default function Header({ songsNumber, onViewFavorites }: HeaderProps) {
             <p className='mt-3 opacity-50'> You have {songsNumber} songs in your library</p>
           </div>
 
-          <div>
-            Sorft from A-Z - search component
+          <div className='flex items-center'>
+            <p className='mr-2'> Sort from A-Z </p> 
+            <Toggle onClick={onSortSongs} />
           </div>
         </div>
       </Wrapper>

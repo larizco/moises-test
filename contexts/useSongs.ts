@@ -35,7 +35,7 @@ const toggleFavoriteSong = (id: number) => {
   }
 };
 
-export function useSongs() {
+export function useSongs(shouldFetch = false) {
   const context = React.useContext(Context);
   const [songs, setSongs] = React.useState([] as SongWithFavorite[]);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -45,16 +45,23 @@ export function useSongs() {
   }
 
   React.useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      const songs = await fetchSongs();
-      
-      setSongs(songs);
-      setIsLoading(false);
-    };
+    if(shouldFetch) {
+      const fetchData = async () => {
+        setIsLoading(true);
 
-    fetchData();
-  }, []);
+        try {
+          const fetchedSongs = await fetchSongs();
+          setSongs(fetchedSongs);
+        } catch (error) {
+          console.error('Error fetching songs:', error);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+
+      fetchData();
+    }
+  }, [shouldFetch]);
 
   const toggleFavorite = (id: number) => {
     toggleFavoriteSong(id);

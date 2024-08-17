@@ -7,11 +7,18 @@ import Header from '../components/header';
 import SongsList from '../components/songsList';
 
 export default function Home() {
-  const { songs, isLoading } = useSongs();
+  const { songs, isLoading } = useSongs(true);
   const [ filterFavorites, setFilterFavorites ] = React.useState(false);
+  const [ sortedSongs, setSortedSongs ] = React.useState(false);
+
+  const alphabeticalSongs = [...songs].sort((a, b) => a.song.title.localeCompare(b.song.title));
 
   const toggleViewFavorites = () => {
     setFilterFavorites(!filterFavorites);
+  };
+
+  const toggleSortSongs = () => {
+    setSortedSongs(!sortedSongs);
   };
 
   return (
@@ -22,8 +29,16 @@ export default function Home() {
       </Head>
 
       <NavBar search />
-      <Header songsNumber={songs?.length} onViewFavorites={toggleViewFavorites}/>
-      <SongsList songs={songs} filterFavorites={filterFavorites} />
+      <Header 
+        songsNumber={songs?.length} 
+        onViewFavorites={toggleViewFavorites}
+        onSortSongs={toggleSortSongs}
+      />
+
+      <SongsList 
+        songs={sortedSongs ? alphabeticalSongs : songs} 
+        filterFavorites={filterFavorites}
+      />
     </div>
   );
 };
