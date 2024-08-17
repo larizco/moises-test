@@ -1,6 +1,11 @@
 import Head from 'next/head';
+import { useSongs } from '../contexts/useSongs';
 
 export default function Home() {
+  const { songs, isLoading } = useSongs();
+
+  console.log(songs, isLoading);
+  
   return (
     <div>
       <Head>

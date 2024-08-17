@@ -1,9 +1,16 @@
-// pages/_app.tsx
-import '../styles/globals.css'; // Importa o CSS global com Tailwind CSS
-import type { AppProps } from 'next/app'; // Importa o tipo AppProps do Next.js
+import { SongsContext } from '../contexts/songsContext';
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />; // Renderiza a página atual
+  return(
+    <>
+      <SongsContext> 
+        <Component {...pageProps} />;
+      </SongsContext>
+    </>
+  )
 }
 
 export default MyApp;
+ 
