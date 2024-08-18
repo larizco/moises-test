@@ -2,7 +2,6 @@
 
 ### Common commands
 
-- `node server.js` - start the node server providing the data
 - `npm run dev` - run the development env with nextjs
 
 ### Typography
