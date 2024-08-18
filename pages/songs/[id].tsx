@@ -33,9 +33,9 @@ export default function SongPage() {
     : {};
 
   return (
-    <div>
+    <div className='bg-[#12303B] h-full min-h-[100vh]'>
       <Head>
-        <title>MUSE.ai</title>
+        <title>MUSE.ai - {song?.song.title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
