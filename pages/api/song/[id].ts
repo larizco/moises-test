@@ -1,9 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import fs from 'fs';
-
-const payload = JSON.parse(
-  fs.readFileSync("./server-payload.json", { encoding: "utf8" })
-);
+import payload from '../payload.json';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query;
