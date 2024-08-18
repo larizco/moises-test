@@ -12,7 +12,7 @@ export default function NavBar({ search }: NavBarProps) {
   const router = useRouter();
   
   return (
-    <nav className='bg-gray-dark'>
+    <nav className='bg-gray-dark relative z-10'>
       <Wrapper>
         <div className='h-20 flex items-center'> 
           <div className='mr-14 cursor-pointer' onClick={() => router.push('/')}>

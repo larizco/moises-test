@@ -34,13 +34,14 @@ export default function CustomPlayer({data}: {data: SongWithFavorite}) {
           <span className='ml-3'> {song.album.year} </span>
         </div>
       </div>
-      <div className='mt-10'>
+      <div className='mt-10 w-[414px]'>
         <AudioPlayer
           src={`/assets/audio/${song.files.audio}`}
           autoPlay={false}
           showSkipControls={false}
           showJumpControls={false}
           customVolumeControls={[]}
+          autoPlayAfterSrcChange={false}
         />
       </div>
     </>

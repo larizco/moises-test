@@ -10,9 +10,13 @@ export const fetchSongs = async (): Promise<SongWithFavorite[]> => {
   return enrichFavoriteSongs(json.songs);
 };
 
-export const fetchSongById = async (id: number): Promise<SongWithFavorite> => {
-  const response = await fetch(API_URL + `/songs/${id}`);
-  const json = await response.json();
-
-  return enrichFavoriteSongs([json])[0];
+export const fetchSongById = async (id: number): Promise<SongWithFavorite | null> => {
+  try {
+    const response = await fetch(API_URL + `/songs/${id}`);
+    const json = await response.json();
+    return enrichFavoriteSongs([json])[0];
+  } catch (error) {
+    console.error('Error fetching songs:', error);
+    return null
+  }
 };

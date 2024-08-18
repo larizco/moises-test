@@ -7,7 +7,7 @@ export default function Song({data}: {data: SongWithFavorite}) {
 
 
   return (
-    <div className='my-20 flex'>
+    <div className='py-20 flex'>
       <img className='rounded-t w-' src={`/assets/images/${song.files.coverArt}`} alt={song.title}/>
       <div className='ml-9 flex flex-col justify-center relative'>
         <CustomPlayer data={data} />

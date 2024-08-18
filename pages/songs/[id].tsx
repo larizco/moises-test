@@ -27,10 +27,11 @@ export default function SongPage() {
     getSong();
   }, [id]);
 
-  if(!song) {
-    return false
-  }
-  
+  const backgroundPoster = song?.song.files.poster;
+  const backgroundPosterStyle = backgroundPoster
+    ? { backgroundImage: `url('/assets/images/${backgroundPoster}')` }
+    : {};
+
   return (
     <div>
       <Head>
@@ -40,11 +41,22 @@ export default function SongPage() {
 
       <NavBar search />
 
-      
-      <Wrapper>
-        <Song data={song} />
-        <RelatedSongs ids={song.related} allSongs={songs}/>
-      </Wrapper>
+      <div className='bg-[#12303B]' style={{height: 'calc(100vh - 80px)'}}>
+        <div 
+          style={backgroundPosterStyle}
+          className="w-[35vw] h-[70vh] bg-contain bg-no-repeat bg-center absolute top-0 right-8 z-0 opacity-30 z-0"
+        ></div>
+        <Wrapper>
+          {song && 
+            <>
+              <Song data={song} />
+              <RelatedSongs ids={song.related} allSongs={songs}/>
+            </>
+          }
+
+          {!song && <p className='text-center mt-10'>Not found</p>}
+        </Wrapper>
+      </div>
     </div>
   )
 }

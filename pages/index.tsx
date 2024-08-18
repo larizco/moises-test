@@ -7,7 +7,7 @@ import Header from '../components/header';
 import SongsList from '../components/songsList';
 
 export default function Home() {
-  const { songs, isLoading } = useSongs(true);
+  const { songs } = useSongs(true);
   const [ filterFavorites, setFilterFavorites ] = React.useState(false);
   const [ sortedSongs, setSortedSongs ] = React.useState(false);
 
