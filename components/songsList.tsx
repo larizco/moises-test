@@ -33,9 +33,9 @@ const SongCard = ({item, filterFavorites} : SongCardProps) => {
   };
   
   return (
-    <div className='rounded-lg w-[204px] bg-gray-medium cursor-pointer' onClick={() => router.push(`/songs/${id}`)}>
+    <div className='rounded-lg w-[204px] bg-gray-medium cursor-pointer'>
       <div className='flex justify-between items-center relative'>
-        <div>
+        <div onClick={() => router.push(`/songs/${id}`)}>
           <img className='rounded-t' src={`/assets/images/${song.files.coverArt}`} alt={song.title}/>
           <div className='p-4'>
             <h1 className='text-lg font-semibold'>{song.title}</h1>

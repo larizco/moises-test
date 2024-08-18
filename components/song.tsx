@@ -1,19 +1,33 @@
+import React from "react";
 import { SongWithFavorite } from "../data/interfaces";
 import Icon from "./icon";
+import { useSongs } from "../data/useSongs";
 
 export default function Song({data}: {data: SongWithFavorite}) {
   const { song } = data;
+  const { toggleFavorite } = useSongs();
+  const [favorite, setFavorite] = React.useState(data.isFavorite);
+
+  const handleHeartClick = () => {
+    setFavorite(!favorite);
+    toggleFavorite(data.id);
+  };
 
   return (
-    <div className='my-20 flex'>
+    <div className='my-16 flex'>
       <img className='rounded-t' src={`/assets/images/${song.files.coverArt}`} alt={song.title}/>
       <div className='ml-9 flex flex-col justify-center'>
         <div className='flex items-center'>
           <Icon name='play' size='large' />
           <div className='ml-9'>
-            <h1 className='text-3xl font-semibold mb-3'>
-              {song.title}
-            </h1>
+            <div className='flex items-center mb-3'>
+              <h1 className='text-3xl font-semibold'>
+                {song.title}
+              </h1>
+              <div className='cursor-pointer ml-4' onClick={handleHeartClick}>
+                <Icon name={favorite ? 'filled-heart' : 'heart'} size='small' />
+              </div>
+            </div>
             <span className='mr-3'> {song.artist} </span> |
             <span className='mx-3'> {song.album.title} </span> | 
             <span className='ml-3'> {song.album.year} </span>

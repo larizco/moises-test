@@ -11,7 +11,7 @@ import RelatedSongs from '../../components/relatedSongs';
 
 export default function SongPage() {
   const [song, setSong] = React.useState<SongWithFavorite | null>(null);
-  const { getSongById } = useSongs();
+  const { songs, getSongById } = useSongs(true);
 
   const router = useRouter();
   const { id } = router.query;
@@ -28,7 +28,7 @@ export default function SongPage() {
   }, [id]);
 
   if(!song) {
-    return <div>Loading...</div>
+    return false
   }
   
   return (
@@ -40,9 +40,10 @@ export default function SongPage() {
 
       <NavBar search />
 
+      
       <Wrapper>
         <Song data={song} />
-        <RelatedSongs />
+        <RelatedSongs ids={song.related} allSongs={songs}/>
       </Wrapper>
     </div>
   )
