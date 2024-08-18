@@ -35,10 +35,10 @@ const SongCard = ({item, filterFavorites} : SongCardProps) => {
   return (
     <div className='rounded-lg w-[204px] bg-gray-medium cursor-pointer'>
       <div className='flex justify-between items-center relative'>
-        <div onClick={() => router.push(`/songs/${id}`)}>
+        <div className='w-full' onClick={() => router.push(`/songs/${id}`)}>
           <img className='rounded-t' src={`/assets/images/${song.files.coverArt}`} alt={song.title}/>
           <div className='p-4'>
-            <h1 className='text-lg font-semibold'>{song.title}</h1>
+            <h1 className='text-lg font-semibold truncate'>{song.title}</h1>
             <p className='text-xs text-gray-light'>{song.artist}</p>
           </div>
         </div>

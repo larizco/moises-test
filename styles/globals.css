@@ -56,3 +56,65 @@ button {
   padding: 0.5rem 1rem;
   font-weight: bold;
 }
+
+.rhap_container {
+  background-color: transparent !important;
+}
+
+.rhap_progress-bar-show-download {
+  background-color: white !important;
+  height: 2px !important;
+}
+
+.rhap_progress-section {
+  position: relative !important;
+}
+
+.rhap_time {
+  position: absolute !important;
+  top: 27px !important;
+  color: white !important;
+  font-size: 14px !important;
+}
+
+.rhap_time.rhap_total-time {
+  right: 0 !important;
+}
+
+.rhap_main-controls-button {
+  color: white !important;
+}
+
+.rhap_progress-indicator {
+  background: white !important;
+  width: 12px !important;
+  height: 12px !important;
+  top: -5px !important;
+}
+
+.rhap_progress-container {
+  margin: 0 !important;
+}
+
+.rhap_progress-indicator {
+  margin: 0 !important;
+}
+
+.rhap_button-clear {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 80px;
+  height: 90px;
+  width: 80px !important;
+  height: 90px !important;
+}
+
+.rhap_container svg {
+  width: 80px !important;
+  height: 90px !important;
+}
+
+.rhap_additional-controls {
+  display: none !important;
+}

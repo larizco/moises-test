@@ -8,11 +8,12 @@ interface RelatedSongsProps {
 
 export default function RelatedSongs({ids, allSongs}: RelatedSongsProps) {
   const relatedSongs = allSongs.filter(song => ids?.includes(song.id));
+  if (!relatedSongs.length) return 
 
   return (
     <div>
-      <h2>Other albums</h2>
-      <ul>
+      <h2>Other songs</h2>
+      <ul className='mt-5'>
         <SongsList songs={relatedSongs} filterFavorites={false} />
       </ul>
     </div>
