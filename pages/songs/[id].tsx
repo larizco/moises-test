@@ -54,7 +54,7 @@ export default function SongPage() {
             </>
           }
 
-          {!song && <p className='text-center mt-10'>Not found</p>}
+          {!song && <p className='text-center mt-10'>Loading...</p>}
         </Wrapper>
       </div>
     </div>
