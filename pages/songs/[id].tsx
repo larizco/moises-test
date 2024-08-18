@@ -2,11 +2,11 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router'
 import { SongWithFavorite } from '../../data/interfaces';
+import { useSongs } from '../../data/useSongs';
 
 import NavBar from '../../components/navBar';
 import Wrapper from '../../components/wrapper';
 import Song from '../../components/song';
-import { useSongs } from '../../data/useSongs';
 import RelatedSongs from '../../components/relatedSongs';
 
 export default function SongPage() {
@@ -41,10 +41,10 @@ export default function SongPage() {
 
       <NavBar search />
 
-      <div className='bg-[#12303B]' style={{height: 'calc(100vh - 80px)'}}>
+      <div>
         <div 
           style={backgroundPosterStyle}
-          className="w-[35vw] h-[70vh] bg-contain bg-no-repeat bg-center absolute top-0 right-8 z-0 opacity-30 z-0"
+          className="w-[35vw] h-[70vh] bg-contain bg-no-repeat bg-center absolute top-0 right-8 z-0 opacity-30 z-0 hidden md:block"
         ></div>
         <Wrapper>
           {song && 

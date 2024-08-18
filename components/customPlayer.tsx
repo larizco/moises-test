@@ -1,10 +1,9 @@
 import React from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-
+import { useSongs } from '../data/useSongs';
 import { SongWithFavorite } from '../data/interfaces';
 import Icon from './icon';
-import { useSongs } from '../data/useSongs';
 
 export default function CustomPlayer({data}: {data: SongWithFavorite}) {
   const { song } = data;
@@ -29,12 +28,14 @@ export default function CustomPlayer({data}: {data: SongWithFavorite}) {
               <Icon name={favorite ? 'filled-heart' : 'heart'} size='small' />
             </div>
           </div>
-          <span className='mr-3'> {song.artist} </span> |
-          <span className='mx-3'> {song.album.title} </span> | 
-          <span className='ml-3'> {song.album.year} </span>
+          <div>
+            {song.artist} <span className='mx-3'> | </span> 
+            {song.album.title} <span className='mx-3'> | </span>  
+            {song.album.year}
+          </div>
         </div>
       </div>
-      <div className='mt-10 w-[414px]'>
+      <div className='mt-10 w-full lg:w-[414px]'>
         <AudioPlayer
           src={`/assets/audio/${song.files.audio}`}
           autoPlay={false}

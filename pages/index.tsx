@@ -5,6 +5,7 @@ import { useSongs } from '../data/useSongs';
 import NavBar from '../components/navBar';
 import Header from '../components/header';
 import SongsList from '../components/songsList';
+import Wrapper from '../components/wrapper';
 
 export default function Home() {
   const { songs } = useSongs(true);
@@ -35,10 +36,12 @@ export default function Home() {
         onSortSongs={toggleSortSongs}
       />
 
-      <SongsList 
-        songs={sortedSongs ? alphabeticalSongs : songs} 
-        filterFavorites={filterFavorites}
-      />
+      <Wrapper>
+        <SongsList 
+          songs={sortedSongs ? alphabeticalSongs : songs} 
+          filterFavorites={filterFavorites}
+        />
+      </Wrapper>
     </div>
   );
 };

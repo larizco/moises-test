@@ -1,10 +1,7 @@
 import React from "react";
 import { useRouter } from 'next/router'
-
-import { Song, SongWithFavorite } from "../data/interfaces";
+import { SongWithFavorite } from "../data/interfaces";
 import { useSongs } from "../data/useSongs";
-
-import Wrapper from "./wrapper";
 import Icon from "./icon";
 
 interface SongCardProps {
@@ -33,10 +30,10 @@ const SongCard = ({item, filterFavorites} : SongCardProps) => {
   };
   
   return (
-    <div className='rounded-lg w-[204px] bg-gray-medium cursor-pointer'>
+    <div className='rounded-lg w-full bg-gray-medium cursor-pointer sm:w-[47%] md:w-[30%] lg:w-[22%] xl:w-[204px]'>
       <div className='flex justify-between items-center relative'>
         <div className='w-full' onClick={() => router.push(`/songs/${id}`)}>
-          <img className='rounded-t' src={`/assets/images/${song.files.coverArt}`} alt={song.title}/>
+          <img className='rounded-t w-full' src={`/assets/images/${song.files.coverArt}`} alt={song.title}/>
           <div className='p-4'>
             <h1 className='text-lg font-semibold truncate'>{song.title}</h1>
             <p className='text-xs text-gray-light'>{song.artist}</p>
@@ -54,12 +51,10 @@ const SongCard = ({item, filterFavorites} : SongCardProps) => {
 export default function SongsList({ songs, filterFavorites }: SongsListProps) { 
 
   return (
-    <Wrapper>
-      <div className='flex flex-wrap gap-8'>
-        {songs?.map((song) => (
-          <SongCard item={song} key={song.id} filterFavorites={filterFavorites}/>
-        ))}
-      </div>
-    </Wrapper>
+    <div className='flex flex-wrap gap-8'>
+      {songs?.map((song) => (
+        <SongCard item={song} key={song.id} filterFavorites={filterFavorites}/>
+      ))}
+    </div>
   );
 };

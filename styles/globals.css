@@ -118,3 +118,9 @@ button {
 .rhap_additional-controls {
   display: none !important;
 }
+
+@media screen and (max-width: 768px) {
+  .rhap_button-clear {
+    top: -10px
+  }
+}
