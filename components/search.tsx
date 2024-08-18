@@ -1,11 +1,12 @@
 import React from 'react';
-import { useSongs } from '../contexts/useSongs';
+import { useSongs } from '../data/useSongs';
 import Icon from './icon';
-import { SongWithFavorite } from '../contexts/interfaces';
+import { SongWithFavorite } from '../data/interfaces';
+import Link from 'next/link';
 
 export default function Search() {
-  const { songs } = useSongs(true);
   const [filteredSongs, setFilteredSongs] = React.useState([] as SongWithFavorite[]);
+  const { songs } = useSongs(true);
 
   const searchSongs = (e: React.ChangeEvent<HTMLInputElement>) => {
     const search = e.target.value;
@@ -17,6 +18,10 @@ export default function Search() {
     setFilteredSongs(result);
   };
 
+  const delayedCloseSearch = () => {
+    setTimeout(() => setFilteredSongs([]), 400);
+  }
+
   return (
     <div className='relative w-full'>
       <input
@@ -24,6 +29,7 @@ export default function Search() {
         type='text'
         placeholder='Search in your library'
         onChange={searchSongs}
+        onBlur={delayedCloseSearch}
       />
       <div className='absolute top-[10px] left-3'>
         <Icon name='search' size='small' />
@@ -31,9 +37,11 @@ export default function Search() {
 
       <ul className='absolute bg-gray-medium w-full mt-1 rounded-lg z-10 px-4'>
         {filteredSongs.map((item: SongWithFavorite) => (
-          <li key={item.id} className='py-3 list-none text-base border-b	border-[#545454] last:border-0'>
-            {item.song.title}
-          </li>
+          <Link href={`/songs/${item.id}`}>
+            <li key={item.id} className='py-3 list-none text-base border-b	border-[#545454] last:border-0'>
+              {item.song.title}
+            </li>
+          </Link>
         ))}
       </ul>
     </div>

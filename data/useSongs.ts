@@ -1,39 +1,10 @@
 import * as React from 'react';
 import { Context } from './songsContext';
-import { Song, SongWithFavorite } from './interfaces';
+import { SongWithFavorite } from './interfaces';
 
-const API_URL = process.env.NEXT_PUBLIC_SERVER_URL;
+import { fetchSongById, fetchSongs } from './utils/fetchApi';
+import { toggleFavoriteSong } from './utils/favorites';
 
-const getFavoriteSongs = (): number[] => {
-  const favoriteSongsRaw = localStorage.getItem('favoriteSongs');
-  return favoriteSongsRaw ? JSON.parse(favoriteSongsRaw) : [];
-};
-
-const enrichFavoriteSongs = (songs: Song[]): SongWithFavorite[] => {
-  return songs.map((song) => {
-    return {
-      ...song,
-      isFavorite: getFavoriteSongs()?.includes(song.id) || false
-    };
-  });
-};
-
-const fetchSongs = async () => {
-  const response = await fetch(API_URL + '/songs');
-  const json = await response.json();
-  
-  return enrichFavoriteSongs(json.songs);
-};
-
-const toggleFavoriteSong = (id: number) => {
-  const favoriteSongs = getFavoriteSongs();
-
-  if (favoriteSongs.includes(id)) {
-    localStorage.setItem('favoriteSongs', JSON.stringify(favoriteSongs.filter((songId: number) => songId !== id)));
-  } else {
-    localStorage.setItem('favoriteSongs', JSON.stringify([...favoriteSongs, id]));
-  }
-};
 
 export function useSongs(shouldFetch = false) {
   const context = React.useContext(Context);
@@ -77,5 +48,9 @@ export function useSongs(shouldFetch = false) {
     }));
   };
 
-  return { songs, isLoading, toggleFavorite };
+  const getSongById = (id: number) => {
+    return fetchSongById(id);
+  };
+
+  return { songs, isLoading, toggleFavorite, getSongById };
 };

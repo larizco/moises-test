@@ -23,9 +23,9 @@ const server = http.createServer((req, res) => {
   }
 
   if (req.url.includes("/song")) {
-    const artistId = req.url.split("/")[2];
-    const artist = payload?.songs?.find((artist) => artist.id == artistId);
-    res.end(JSON.stringify(artist));
+    const songId = req.url.split("/")[2];
+    const song = payload?.songs?.find((song) => song.id == songId);
+    res.end(JSON.stringify(song));
     return;
   }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { useSongs } from '../contexts/useSongs';
+import { useSongs } from '../data/useSongs';
 
 import NavBar from '../components/navBar';
 import Header from '../components/header';

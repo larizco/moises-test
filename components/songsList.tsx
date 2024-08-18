@@ -1,6 +1,8 @@
 import React from "react";
-import { Song, SongWithFavorite } from "../contexts/interfaces";
-import { useSongs } from "../contexts/useSongs";
+import { useRouter } from 'next/router'
+
+import { Song, SongWithFavorite } from "../data/interfaces";
+import { useSongs } from "../data/useSongs";
 
 import Wrapper from "./wrapper";
 import Icon from "./icon";
@@ -19,6 +21,7 @@ const SongCard = ({item, filterFavorites} : SongCardProps) => {
   const { id, isFavorite, song } = item;
   const [favorite, setFavorite] = React.useState(isFavorite);
   const { toggleFavorite } = useSongs();
+  const router = useRouter()
 
   if (filterFavorites && !favorite) {
     return null;
@@ -30,7 +33,7 @@ const SongCard = ({item, filterFavorites} : SongCardProps) => {
   };
   
   return (
-    <div className='rounded-lg w-[204px] bg-gray-medium'>
+    <div className='rounded-lg w-[204px] bg-gray-medium cursor-pointer' onClick={() => router.push(`/songs/${id}`)}>
       <div className='flex justify-between items-center relative'>
         <div>
           <img className='rounded-t' src={`/assets/images/${song.files.coverArt}`} alt={song.title}/>
